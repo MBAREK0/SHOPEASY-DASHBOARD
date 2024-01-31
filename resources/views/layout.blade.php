@@ -20,7 +20,7 @@
             <div class="h-100">
                 <div class="sidebar_logo d-flex align-items-end">
 
-                    <a href="#" class="nav-link text-white-50">Adidas</a>
+                    <a href="#" class="nav-link text-white-50">ADIDAS</a>
 
                 </div>
 
@@ -32,6 +32,10 @@
 
                     <li class="sidebar_item ">
                         <a href="/products" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Products</a>
+                    </li>
+
+                    <li class="sidebar_item ">
+                        <a href="/clients" class="sidebar_link"><img src="{{ asset('img/agents.svg') }}" alt="icon">Clients</a>
                     </li>
 
                 </ul>
@@ -105,10 +109,15 @@
             <div class="container">
             @yield('editproduit')
             </div>
+            @yield('clients')
+            @yield('addclients')
+            <div class="container">
+            @yield('editclient')
+            </div>
             
         </div>
     </div>
-   
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

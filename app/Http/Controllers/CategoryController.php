@@ -26,7 +26,6 @@ class CategoryController extends Controller
     }
 
     public function delete_category($id){
-
         $category= Category::find($id);
         $category->delete();
         return redirect('/')->with('category deleted successfully');

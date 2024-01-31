@@ -45,7 +45,6 @@ class ProductController extends Controller
 
     
     public function edit_product($id){
-        $category = category::find($id);
         $product = Product::find($id);
         // dump($product);
         // die();
