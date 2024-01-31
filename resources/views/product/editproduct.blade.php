@@ -35,24 +35,18 @@
         </div>
         <div class="form-group">
             <label>tags</label>
-            <input type="text" class="form-control" name="tags" value="{{ $product->id }}">
+            <input type="text" class="form-control" name="tags" value="{{ $product->tags }}">
         </div>
         <div class="form-group">
-            <label>Image </label>
+            <img src="/img/{{ $product->image_path }}" width="300px">
             <input type="file" class="form-control" name="image_path" accept="image/*">
+            </label>
         </div>
     </div>
     <div class="modal-footer">
-        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+        <a href="/products"><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></a>
         <input type="submit" class="btn btn-success" value="Add">
     </div>
 </form>
 
-
-<script>
-    document.getElementById('image_path_input').addEventListener('change', function() {
-        var fileName = this.files[0].name;
-        document.querySelector('.custom-file-label').textContent = fileName;
-    });
-</script>
 @endsection
