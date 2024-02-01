@@ -22,6 +22,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'prix' => 'required',
+            'quantity' => 'required',
             'category_id' => 'required',
             'tags' => 'required',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
@@ -35,6 +36,7 @@ class ProductController extends Controller
         $produit->name = $request->name;
         $produit->description = $request->description;
         $produit->prix = $request->prix;
+        $produit->quantity = $request->quantity;
         $produit->id_categorie = $request->category_id;
         $produit->tags = $request->tags;
         $produit->image_path = $uploadFileName; 
@@ -57,6 +59,7 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'prix' => 'required',
+            'quantity' => 'required',
             'category_id' => 'required',
             'tags' => 'required',
             'image_path' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
@@ -70,6 +73,7 @@ class ProductController extends Controller
         $produit->name = $request->name;
         $produit->description = $request->description;
         $produit->prix = $request->prix;
+        $produit->quantity = $request->quantity;
         $produit->id_categorie = $request->category_id;
         $produit->tags = $request->tags;
         $produit->image_path = $uploadFileName; 
@@ -79,10 +83,17 @@ class ProductController extends Controller
 
     }
 
-    public function delete_product($id){
+        public function delete_product($id){
         $produit = Product::find($id);
         $produit->delete();
         return redirect('/products');
 
     }
-}
+
+    public function allproducts(){
+        $products = Product::all();
+         return view('index',compact('products'));
+    }
+
+    }
+

@@ -33,3 +33,5 @@
     Route::get('/deleteclient/{id}', [ClientControlller::class, 'delete_client']);
     Route::get('/editclient/{id}', [ClientControlller::class, 'edit_client']);
     Route::post('/updateclients/{id}', [ClientControlller::class, 'update_client']);
+    Route::get('/allproducts', [ProductController::class, 'allproducts']);
+

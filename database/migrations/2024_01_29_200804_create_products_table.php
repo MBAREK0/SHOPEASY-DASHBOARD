@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->float('prix');
+            $table->integer('quantity');
             $table->string('image_path');
             $table->string('tags');
             $table->unsignedBigInteger('id_categorie');

@@ -109,6 +109,10 @@
                         <input type="number" class="form-control" name="prix">
                     </div>
                     <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" class="form-control" name="quantity">
+                    </div>
+                    <div class="form-group">
                         <label>category</label>
                         <select class="form-control" name="category_id" data-placeholder="choose a category">
                             @foreach($categories as $category)

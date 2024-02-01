@@ -9,7 +9,6 @@
         <thead class="bg-light">
             <tr>
                 <th>Name</th>
-
             </tr>
         </thead>
         <tbody>

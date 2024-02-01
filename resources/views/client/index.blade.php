@@ -2,6 +2,7 @@
 @section('clients')
 <section class="Agents px-4 ">
     <div class="d-flex justify-content-end mb-3">
+        
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> Add client</a>
     </div>
 
