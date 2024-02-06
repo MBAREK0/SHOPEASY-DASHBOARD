@@ -1,9 +1,12 @@
     <?php
 
+    use App\Http\Controllers\AuthController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ClientControlller;
-    use App\Http\Controllers\ProductController;
-    use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PermessionsController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
+use Illuminate\Support\Facades\Route;
 
     /*
     |--------------------------------------------------------------------------
@@ -20,6 +23,18 @@
 
     Route::get('/', [CategoryController::class, 'list_categories']);
     Route::get('/products', [ProductController::class, 'list_products']);
+    Route::get('/roles', [RoleController::class, 'show_roles']);
+    Route::post('/addRole', [RoleController::class, 'add_roles']);
+    Route::get('/deleteRole/{id}', [RoleController::class, 'deleteRole']);
+    Route::get('/editRole/{id}', [RoleController::class, 'editRole']);
+    Route::post('/updaterole', [RoleController::class, 'update_role']);
+    ////////////
+    Route::get('/permessions', [PermessionsController::class, 'show_permessions']);
+    Route::post('/addPermession', [PermessionsController::class, 'addPermessions']);
+    Route::get('/deletePermession/{id}', [PermessionsController::class, 'deletePermessions']);
+    Route::get('/editPermession/{id}', [PermessionsController::class, 'editPermessions']);
+    Route::post('/updatePermession', [PermessionsController::class, 'updatePermessions']);
+
     Route::post('/addcategory', [CategoryController::class, 'create_category']);
     Route::post('/updateCategory', [CategoryController::class, 'update_category']);
     Route::delete('/deletecategory/{id}', [CategoryController::class, 'delete_category']);
@@ -34,4 +49,12 @@
     Route::get('/editclient/{id}', [ClientControlller::class, 'edit_client']);
     Route::post('/updateclients/{id}', [ClientControlller::class, 'update_client']);
     Route::get('/allproducts', [ProductController::class, 'allproducts']);
+    Route::get('/register', [AuthController::class, 'register']);
+    Route::post('/registerpost', [AuthController::class, 'registerPost'])->name('registerpost');
+    Route::get('/login', [AuthController::class, 'login']);
+    Route::post('/loginpost', [AuthController::class, 'loginpost'])->name('loginpost');
+
+
+
+
 

@@ -39,11 +39,16 @@
                         <a href="/clients" class="sidebar_link"><img src="{{ asset('img/agents.svg') }}" alt="icon">Clients</a>
                     </li>
 
+                    <li class="sidebar_item ">
+                        <a href="/roles" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Roles</a>
+                    </li>
+                     <li class="sidebar_item ">
+                        <a href="/permessions" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Permessions</a>
+                    </li>
+
                 </ul>
                 <div class="line"></div>
                 <a href="#" class="sidebar_link"><img src="{{ asset('img/settings.svg') }}" alt="">Settings</a>
-
-
             </div>
         </aside>
         <div class="main">

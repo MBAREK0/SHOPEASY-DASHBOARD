@@ -1,5 +1,12 @@
 @extends('layout')
 @section('products')
+<br>
+ 
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success" role="alert">
+   {{$message}}
+  </div>
+  @endif
 <section class="Agents px-4 ">
     <div class="d-flex justify-content-end mb-3">
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> Add product</a>
