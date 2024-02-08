@@ -3,10 +3,11 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ClientControlller;
-use App\Http\Controllers\PermessionsController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\RoleController;
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\PermessionsController;
+    use App\Http\Controllers\ProductController;
+    use App\Http\Controllers\RoleController;
+    use App\Http\Controllers\UserController;
+    use Illuminate\Support\Facades\Route;
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +35,14 @@ use Illuminate\Support\Facades\Route;
     Route::get('/deletePermession/{id}', [PermessionsController::class, 'deletePermessions']);
     Route::get('/editPermession/{id}', [PermessionsController::class, 'editPermessions']);
     Route::post('/updatePermession', [PermessionsController::class, 'updatePermessions']);
-
+    ///////
+    // Route::middleware(['check-permission:gestionnaireClient'])->get('/clients', [ClientControlller::class, 'list_clients']);;
+    Route::get('/users', [UserController::class, 'show_users']);
+    Route::post('/addUser', [UserController::class, 'addUsers']);
+    Route::get('/deleteUser/{id}', [UserController::class, 'deleteUsers']);
+    Route::get('/editUser/{id}', [UserController::class, 'editUsers']);
+    Route::post('/updateUser', [UserController::class, 'updateUsers']);
+    /////
     Route::post('/addcategory', [CategoryController::class, 'create_category']);
     Route::post('/updateCategory', [CategoryController::class, 'update_category']);
     Route::delete('/deletecategory/{id}', [CategoryController::class, 'delete_category']);
@@ -43,7 +51,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/updateproducts', [ProductController::class, 'update_product']);
     Route::post('/addproducts', [ProductController::class, 'add_product']);
     Route::get('/deleteproduct/{id}', [ProductController::class, 'delete_product']);
-    Route::get('/clients', [ClientControlller::class, 'list_clients']);
+    // Route::get('/clients', [ClientControlller::class, 'list_clients']);
     Route::post('/addclients', [ClientControlller::class, 'add_client']);
     Route::get('/deleteclient/{id}', [ClientControlller::class, 'delete_client']);
     Route::get('/editclient/{id}', [ClientControlller::class, 'edit_client']);
@@ -52,6 +60,10 @@ use Illuminate\Support\Facades\Route;
     Route::get('/register', [AuthController::class, 'register']);
     Route::post('/registerpost', [AuthController::class, 'registerPost'])->name('registerpost');
     Route::get('/login', [AuthController::class, 'login']);
+    Route::get('/forgetpassword', [AuthController::class, 'forgetpassword']);
+    Route::post('/resetpasswordPost', [AuthController::class, 'sendemail']);
+    Route::get('/resetwithemail/{token}', [AuthController::class, 'reset'])->name('resetwithemail');
+    Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/loginpost', [AuthController::class, 'loginpost'])->name('loginpost');
 
 

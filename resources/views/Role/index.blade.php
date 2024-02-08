@@ -10,27 +10,40 @@
         <thead class="bg-light">
             <tr>
                 <th>Role_Name</th>
+                <th>Permessions</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($roles as $role)
-            <tr class="freelancer">
-                <td>
-                    <div class="d-flex align-items-center">
-                        <div class="ms-3">
-                            <p class="fw-bold mb-1 f_title">
-                               {{ $role->name }}
-                            </p>
-                        </div>
+        
+  <tbody>
+  
+    @foreach ($uniqueRoles as $role)
+        <tr class="freelancer">
+            <td>
+                <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1 f_title">
+                            {{ $role->role_name }}
+                        </p>
                     </div>
-                </td>
-                 <td>
-                    <a href="/deleteRole/{{ $role->id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
-                    <a href="/editRole/{{ $role->id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
+                </div>
+            </td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                        <p class="fw-bold mb-1 f_title">
+                            {{ implode(', ', $role->permissions) }}
+                        </p>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a href="/deleteRole/{{ $role->role_id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
+                <a href="/editRole/{{ $role->role_id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
+            </td>
+        </tr>
+    @endforeach
+</tbody>
+
     </table>
 
 </section>
@@ -50,6 +63,14 @@
                         <label>Name</label>
                         <input type="text" class="form-control" name="name">
                     </div>
+                    <div class="">
+                        <select class="js-example-basic-multiple form-control" name="permissions[]" multiple="multiple" data-placeholder="Choose permissions">
+                            @foreach ($permessions as $permission)
+                                    <option value="{{ $permission->id }}">{{ $permission->permessions_name }}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
 
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -60,3 +81,4 @@
     </div>
 </div>
 @endsection
+

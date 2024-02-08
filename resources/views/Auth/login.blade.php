@@ -31,7 +31,7 @@
           <i class="fas fa-lock"></i>
           <input type="password" name="password" placeholder="Password" required>
         </div>
-        <div class="pass"><a href="#">Forgot password?</a></div>
+        <div class="pass"><a href="/forgetpassword">Forgot password?</a></div>
         <div class="row button">
           <input type="submit" value="Login">
         </div>
