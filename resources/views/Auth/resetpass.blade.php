@@ -25,18 +25,19 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
-									<form action="/resetpasswordPost" method="post">
+									<form action="/newpasswordPost" method="post">
                                         @csrf
+                                        <input type="text" name="token" value="{{$token}}" hidden>
 										<div class="form-group">
 											<label>Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your email">
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your new password">
 										</div>
                                         <div class="form-group">
 											<label>Confirm Password</label>
-											<input class="form-control form-control-lg" type="password" name="confirmpassword" placeholder="Enter your email">
+											<input class="form-control form-control-lg" type="password" name="confirmpassword" placeholder="Confirm password">
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">Reset password></button>
+											<button type="submit" class="btn btn-lg btn-primary">Reset password</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Reset password</button> -->
 										</div>
 									</form>

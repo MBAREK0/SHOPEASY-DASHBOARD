@@ -62,6 +62,8 @@
     Route::get('/login', [AuthController::class, 'login']);
     Route::get('/forgetpassword', [AuthController::class, 'forgetpassword']);
     Route::post('/resetpasswordPost', [AuthController::class, 'sendemail']);
+    Route::post('/newpasswordPost', [AuthController::class, 'addpassword']);
+
     Route::get('/resetwithemail/{token}', [AuthController::class, 'reset'])->name('resetwithemail');
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/loginpost', [AuthController::class, 'loginpost'])->name('loginpost');

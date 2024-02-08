@@ -70,9 +70,9 @@ class AuthController extends Controller
 
         $resetLink = route('resetwithemail', ['token' => $token]);
 
-        $success = Mail::send('Auth.resetpass', ['resetLink' => $resetLink], function ($message) use ($request) {
+        $success = Mail::raw('To reset your password, click on the following link: ' . $resetLink, function ($message) use ($request) {
             $message->to($request->email)
-                ->subject('Password Reset Link');
+                   ->subject('Password Reset Link');
         });
 
         if ($success) {
@@ -81,8 +81,31 @@ class AuthController extends Controller
             return back()->withErrors(['email' => 'Failed to send reset link.']);
         }
     }
-
-      public function reset(){
-        return view('Auth.resetpass');
+    public function reset($token){
+        return view('Auth.resetpass',compact('token'));
     }
+    public function addpassword(Request $request){
+        $request->validate([
+            'password' => 'required',
+            'token' => 'required',
+        ]);
+        User::where('remember_token', $request->token)->update([
+            'password' => Hash::make($request->password),
+            'remember_token' => null,
+        ]);
+        
+        // $user = User::where('remember_token', $token)->first();
+
+        // if (!$user) {
+        //     return redirect('/login')->with('error', 'Invalid reset token.');
+        // }
+       
+        // $user->password = Hash::make($request->password);
+        // $user->remember_token = null; 
+        // $user->save();
+        return redirect('/login')->with('status', 'Your password has been reset successfully. Please log in with your new password.');
+    }
+        
+
+    
 }

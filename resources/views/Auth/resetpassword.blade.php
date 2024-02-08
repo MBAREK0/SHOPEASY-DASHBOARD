@@ -32,7 +32,7 @@
 											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email">
 										</div>
 										<div class="text-center mt-3">
-											<button type="submit" class="btn btn-lg btn-primary">Reset password></button>
+											<button type="submit" class="btn btn-lg btn-primary">Reset password</button>
 											<!-- <button type="submit" class="btn btn-lg btn-primary">Reset password</button> -->
 										</div>
 									</form>
