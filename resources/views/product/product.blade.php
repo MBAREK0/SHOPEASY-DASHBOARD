@@ -12,9 +12,10 @@
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> Add product</a>
     </div>
 
-    <table class="agent table align-middle bg-white">
+    <table  class="table table-dark table-striped">
         <thead class="bg-light">
             <tr>
+                <th>image</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>price</th>
@@ -26,6 +27,9 @@
         <tbody>
             @foreach($produits as $product)
             <tr class="freelancer">
+                <td >
+                     <img src="img/{{ $product->image_path }}" alt="product" style="width: 37px;border: 2px solid #fff;">
+                </td>
                 <td>
                     <div class="d-flex align-items-center">
 

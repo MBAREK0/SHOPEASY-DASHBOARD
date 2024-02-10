@@ -12,13 +12,19 @@
         }
 
         public function add_client(Request $request) {
-            $request->validate([
+
+                   $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
                 'name' => 'required',
                 'email' => 'required',
                 'carte_bancaire' => 'required',
                 'adress' => 'required',
             ]);
-        
+        if($result !== 'secces'){
+            return  back()->withErrors($result); 
+
+            }
             Client::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -42,12 +48,18 @@
         }
 
         public function update_client(Request $request, $id) {
-            $request->validate([
+                    $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
                 'name' => 'required',
                 'email' => 'required|email|unique:clients,email,'.$id,
                 'carte_bancaire' => 'required|unique:clients,carte_bancaire,'.$id,
                 'adress' => 'required',
             ]);
+            if($result !== 'secces'){
+            return  back()->withErrors($result); 
+
+            }
         
             Client::where('id', $id)->update([
                 'name' => $request->name,

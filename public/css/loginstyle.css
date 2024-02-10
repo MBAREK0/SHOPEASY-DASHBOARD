@@ -6,7 +6,9 @@
   font-family: 'Poppins',sans-serif;
 }
 body{
-  background: #d2cdcf;
+  background-image: url('../img/adidas-computer-desktop-backgrounds-wallpaper-preview.jpg') !important;
+      background-size: cover; /* Cover the entire body */
+    background-repeat: no-repeat;
   overflow: hidden;
 }
 ::selection{
@@ -18,11 +20,12 @@ body{
   margin: 80px auto;
 }
 .wrapper{
-  width: 100%;
+  /*! width: 100%; */
   background: #fff;
   border-radius: 5px;
   margin: -3em ;
   box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+  height: 100%;
 }
 .wrapper .title{
   height: 90px;
@@ -66,7 +69,7 @@ form .row input::placeholder{
   height: 100%;
   color: #fff;
   font-size: 18px;
-  background: #b84592;
+  background: #18dbc5;
   border: 1px solid #b84592;
   border-radius: 5px 0 0 5px;
   display: flex;
@@ -77,7 +80,7 @@ form .row input::placeholder{
   margin: -8px 0 20px 0;
 }
 .wrapper form .pass a{
-  color: #b84592;
+  color: #2788b7;
   font-size: 17px;
   text-decoration: none;
 }
@@ -90,11 +93,12 @@ form .row input::placeholder{
   font-weight: 500;
   padding-left: 0px;
   background: #b84592;
-  border: 1px solid #b84592;
+  border: 1px solid #18dbc5;
   cursor: pointer;
+  background-color: #18dbc5;
 }
 form .button input:hover{
-  background: #b84592;
+  background: #2788b7;
 }
 .wrapper form .signup-link{
   text-align: center;
@@ -102,9 +106,17 @@ form .button input:hover{
   font-size: 17px;
 }
 .wrapper form .signup-link a{
-  color: #b84592;
+  color: #2788b7;
   text-decoration: none;
 }
 form .signup-link a:hover{
   text-decoration: underline;
+} 
+
+.loginForm{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 66px;
+  margin-top: 142px;
 }

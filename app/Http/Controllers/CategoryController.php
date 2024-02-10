@@ -16,10 +16,17 @@ class CategoryController extends Controller
     }
     public function create_category(Request $request)
     {
-        $request->validate([
+
+      $check= new MyvalidateController($request);
+
+       $result= $check->myValidate([
             'name' => 'required',
         ]);
-
+     
+        if($result !== 'secces'){
+           return  back()->withErrors($result); 
+           
+        }
         $category = new Category();
         $category->name = $request->name;
         $category->save();
@@ -36,9 +43,14 @@ class CategoryController extends Controller
 
     public function update_category(Request $request)
     {
-        $request->validate([
+                $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
             'name' => 'required',
         ]);
+        if($result !== 'secces'){
+    return  back()->withErrors($result); 
+    }
 
         $category = Category::find($request->id);
         $category->name = $request->name;

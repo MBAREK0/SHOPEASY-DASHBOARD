@@ -69,7 +69,7 @@ ul {
     max-width: 16rem;
     min-width: 16rem;
     max-height: 100vh;
-    background: #363740;
+    background: #18dbc5;
     transition: all 0.35s ease-in-out;
     overflow: hidden;
 }
@@ -92,15 +92,23 @@ ul {
 a.sidebar_link {
     display: flex;
     padding: 1.2rem 2rem;
-    color: #DDE2FF;
+    color: #60626e;
     align-items: center;
     gap: 2rem;
 }
-
-a.sidebar_link:hover {
-    background-color: #33343b;
+.table-dark th, .table-dark thead th{
+    background-color: #2788b7 !important;
 }
-
+a.sidebar_link:hover {
+    background-color: #dbdbdb;
+}
+a:hover {
+color: #60626e !important;
+}
+.btn-secondary,.btn{
+    color: #60626e !important;
+    background-color: #18dbc5 !important;
+}
 .sidebar_item.active {
     background-color: #60626e;
     color: #DDE2FF;
@@ -187,10 +195,7 @@ a.sidebar_link:hover {
 
 
 /* delet an edit user */
-.edit,.delet_user{
-    cursor: pointer;
-    width: 20px;
-}
+
  
 /* edit modal */
 .modal {
@@ -232,3 +237,8 @@ a.sidebar_link:hover {
     height: 50px; 
     margin: 0 5px;
   }
+.edit,.delet_user{
+    cursor: pointer;
+    width: 20px;
+    background-color: #fff !important;
+}

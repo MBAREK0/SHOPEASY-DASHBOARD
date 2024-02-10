@@ -16,12 +16,14 @@
     {{$message}}
    </div>
    @endif
-
+ 
   <div class="container">
+   <div class="loginForm">
+     <img src="img\10282-Block-Standard-3.jpeg" alt="" style="width: 439px;">
     <div class="wrapper">
-      <div class="title"><span>Login Form</span></div>
-      <h1></h1>
-      <form action="{{ route('loginpost') }}" method="POST">
+   
+     
+         <form action="{{ route('loginpost') }}" method="POST" style="width: 31vw;">
         @csrf
         <div class="row">
           <i class="fas fa-user"></i>
@@ -38,6 +40,9 @@
         <span style="color:red;"></span>
         <div class="signup-link">Not a member? <a href="/register">Signup now</a></div>
       </form>
+     </div>
+      
+   
     </div>
   </div>
 </body>

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
   <div class="wrapper">
     <h2>Registration</h2>
     <form method="POST" action="{{ route('registerpost') }}">

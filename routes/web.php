@@ -3,7 +3,8 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ClientControlller;
-    use App\Http\Controllers\PermessionsController;
+use App\Http\Controllers\MyvalidateController;
+use App\Http\Controllers\PermessionsController;
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\RoleController;
     use App\Http\Controllers\UserController;
@@ -51,12 +52,13 @@
     Route::post('/updateproducts', [ProductController::class, 'update_product']);
     Route::post('/addproducts', [ProductController::class, 'add_product']);
     Route::get('/deleteproduct/{id}', [ProductController::class, 'delete_product']);
-    // Route::get('/clients', [ClientControlller::class, 'list_clients']);
+     Route::get('/clients', [ClientControlller::class, 'list_clients']);
     Route::post('/addclients', [ClientControlller::class, 'add_client']);
     Route::get('/deleteclient/{id}', [ClientControlller::class, 'delete_client']);
     Route::get('/editclient/{id}', [ClientControlller::class, 'edit_client']);
     Route::post('/updateclients/{id}', [ClientControlller::class, 'update_client']);
     Route::get('/allproducts', [ProductController::class, 'allproducts']);
+    // auth
     Route::get('/register', [AuthController::class, 'register']);
     Route::post('/registerpost', [AuthController::class, 'registerPost'])->name('registerpost');
     Route::get('/login', [AuthController::class, 'login']);
@@ -70,5 +72,5 @@
 
 
 
-
+        Route::get('/valide',[MyvalidateController::class,'myValidate']);
 

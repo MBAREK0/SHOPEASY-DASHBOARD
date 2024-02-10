@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Controllers\MyvalidateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -17,11 +18,18 @@ class AuthController extends Controller
     }
 
     public function registerPost(Request $request){
-        $request->validate([
+
+        $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
             'name' => 'required',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required',
             'password' => 'required',
         ]);
+        if($result !== 'secces'){
+    return  back()->withErrors($result); 
+
+}
 
         $user=new User();
         $user->name = $request->name;
@@ -37,11 +45,17 @@ class AuthController extends Controller
     }
 
     public function loginpost(Request $request){
-        $request->validate([
+        $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
             'email' => 'required',
             'password' => 'required',
         ]);
+    if($result !== 'secces'){
+        return  back()->withErrors($result); 
 
+    }
+ 
         $user = User::where('email', $request->email)->first();
         if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Invalid email or password');
@@ -60,49 +74,60 @@ class AuthController extends Controller
     }
 
     public function sendemail(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-        ]);
+{
+            $check= new MyvalidateController($request);
 
-        $token = Str::random(60);
-        User::where('email', $request->email)->update(['remember_token' => $token]);
+     $result=$check->myValidate([
+        'email' => 'required',
+    ]);
+    if($result !== 'secces'){
+    return  back()->withErrors($result); 
 
-        $resetLink = route('resetwithemail', ['token' => $token]);
+}
 
-        $success = Mail::raw('To reset your password, click on the following link: ' . $resetLink, function ($message) use ($request) {
-            $message->to($request->email)
-                   ->subject('Password Reset Link');
-        });
+    $token = Str::random(60);
+    User::where('email', $request->email)->update(['remember_token' => $token]);
 
-        if ($success) {
-            return back()->with('status', 'Password reset link sent.');
-        } else {
-            return back()->withErrors(['email' => 'Failed to send reset link.']);
-        }
+    $resetLink = route('resetwithemail', ['token' => $token]);
+
+    $to = $request->email;
+    $subject = 'Password Reset Link';
+
+    // Sending email
+    $success = Mail::send('mail.index', ['resetLink' => $resetLink], function ($message) use ($to, $subject) {
+         $message->from('hello@app.com', 'Your Application');
+        $message->to($to)
+                ->subject($subject);
+   
+    });
+
+    if ($success) {
+        return back()->with('success', 'check your email for geting the link of reset password');
+    } else {
+        return back()->withErrors(['email' => 'Failed to send reset link.']);
     }
+}
+
     public function reset($token){
         return view('Auth.resetpass',compact('token'));
     }
     public function addpassword(Request $request){
-        $request->validate([
+
+                $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
             'password' => 'required',
             'token' => 'required',
         ]);
+        if($result !== 'secces'){
+    return  back()->withErrors($result); 
+
+}
         User::where('remember_token', $request->token)->update([
             'password' => Hash::make($request->password),
             'remember_token' => null,
         ]);
         
-        // $user = User::where('remember_token', $token)->first();
-
-        // if (!$user) {
-        //     return redirect('/login')->with('error', 'Invalid reset token.');
-        // }
-       
-        // $user->password = Hash::make($request->password);
-        // $user->remember_token = null; 
-        // $user->save();
         return redirect('/login')->with('status', 'Your password has been reset successfully. Please log in with your new password.');
     }
         

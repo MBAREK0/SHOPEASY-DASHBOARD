@@ -5,8 +5,8 @@
         
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> Add client</a>
     </div>
-
-    <table class="agent table align-middle bg-white">
+   
+    <table class="table table-dark table-striped">
         <thead class="bg-light">
             <tr>
                 <th>Name</th>

@@ -22,11 +22,16 @@ class UserController extends Controller
 
     public function addUsers(Request $request)
     {
-        $request->validate([
+               $check= new MyvalidateController($request);
+
+     $result=$check->myValidate([
             'name' => 'required',
             'email' => 'required',
             'role_id' => 'required',
         ]);
+        if($result !== 'secces'){
+          return  back()->withErrors($result); 
+        }
 
         $user = new User();
         $user->name = $request->name;
@@ -52,11 +57,15 @@ class UserController extends Controller
 
     public function updateUsers(Request $request)
     {
-        $request->validate([
+     $check= new MyvalidateController($request);
+     $result=$check->myValidate([
             'name' => 'required',
             'email' => 'required',
             'role_id' => 'required',
         ]);
+       if($result !== 'secces'){
+         return  back()->withErrors($result); 
+        } 
         $user = User::find($request->id);
         $user->name = $request->name;
         $user->email = $request->email;

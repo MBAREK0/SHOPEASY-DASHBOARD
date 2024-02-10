@@ -52,10 +52,11 @@
                      <li class="sidebar_item ">
                         <a href="/users" class="sidebar_link"><img src="{{ asset('img/agent.svg') }}" alt="icon">Administration</a>
                     </li>
+                    <li class="sidebar_item ">
+                        <a href="/logout" class="sidebar_link">Logout</a>
+                    </li>
 
                 </ul>
-                <div class="line"></div>
-                <a href="#" class="sidebar_link"><img src="{{ asset('img/settings.svg') }}" alt="">Settings</a>
             </div>
         </aside>
         <div class="main">
@@ -63,55 +64,13 @@
                 <button class="btn open">
                     <span class="navbar-toggler-icon"> <i class='fa fa-bars'></i></span>
                 </button>
-                <div class="navbar" style="gap:20px !important;">
-                    <div class="">
-                        <input type="search" class="search " placeholder="Search">
-                        <img class="search_icon" src="{{ asset('img/search.svg') }}" alt="iconicon">
-                    </div>
-                    <!-- <img src="img/search.svg') }}" alt="icon"> -->
-                    <img class="notification" src="{{ asset('img/new.svg') }}" alt="icon">
-                    <div class="card new w-auto">
-                        <div class="list-group list-group-light">
-                            <div class="list-group-item px-3 d-flex justify-content-between align-items-center ">
-                                <p class="mt-auto">Notification</p><a href="#"><img src="{{ asset('img/settingsno.svg') }}" alt="icon"></a>
-                            </div>
-                            <div class="list-group-item px-3 d-flex"><img src="{{ asset('img/notif.svg') }}" alt="iconimage">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text mb-3">Some quick example text to build on the card title and
-                                        make up
-                                        the bulk of the card's content.</p>
-                                    <small class="card-text">1 day ago</small>
-                                </div>
-                            </div>
-                            <div class="list-group-item px-3 d-flex"><img src="{{ asset('img/notif.svg') }}" alt="iconimage">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text mb-3">Some quick example text to build on the card title and
-                                        make up
-                                        the bulk of the card's content.</p>
-                                    <small class="card-text">1 day ago</small>
-                                </div>
-                            </div>
-                            <div class="list-group-item px-3 text-center"><a href="#">View all notifications</a></div>
-                        </div>
-                    </div>
-                    <div class="inline"></div>
-                    <div class="name">Admin</div>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-icon pe-md-0 position-relative" data-bs-toggle="dropdown">
-                                <img src="{{ asset('img/photo_admin.svg') }}" alt="icon">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end position-absolute">
-                                <a class="dropdown-item" href="#">Profile</a>
-                                <a class="dropdown-item" href="#">Account Setting</a>
-                                <a class="dropdown-item" href="/logout">Log out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+
             </nav>
+                @if ($errors->has('faild'))
+    <div class="alert alert-danger">
+        {{ $errors->first('faild') }}
+    </div>
+@endif
             @yield('content') 
             @yield('additional_content')
             <div class="container">
