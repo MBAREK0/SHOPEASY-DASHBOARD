@@ -10,7 +10,9 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #d2cdcf;
+  background-image: url('../img/adidas-computer-desktop-backgrounds-wallpaper-preview.jpg') !important;
+        background-size: cover; /* Cover the entire body */
+    background-repeat: no-repeat;
 }
 .wrapper{
   position: relative;
@@ -75,11 +77,11 @@ form h3{
   color: #fff;
   letter-spacing: 1px;
   border: none;
-  background: #b84592;
+  background: #2788b7 ;
   cursor: pointer;
 }
 .input-box.button input:hover{
-  background: #b84592;
+  background: #2788b7;
 }
 form .text h3{
  color: #333;

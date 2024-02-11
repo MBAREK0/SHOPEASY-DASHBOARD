@@ -69,8 +69,8 @@ form .row input::placeholder{
   height: 100%;
   color: #fff;
   font-size: 18px;
-  background: #18dbc5;
-  border: 1px solid #b84592;
+  background: #2788b7 ;
+  border: 1px solid #2788b7 ;
   border-radius: 5px 0 0 5px;
   display: flex;
   align-items: center;
@@ -93,9 +93,9 @@ form .row input::placeholder{
   font-weight: 500;
   padding-left: 0px;
   background: #b84592;
-  border: 1px solid #18dbc5;
+  border: 1px solid #2788b7 ;
   cursor: pointer;
-  background-color: #18dbc5;
+  background-color: #2788b7 ;
 }
 form .button input:hover{
   background: #2788b7;

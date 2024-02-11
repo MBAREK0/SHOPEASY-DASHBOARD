@@ -31,16 +31,21 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect('/')->with('success', 'Category created successfully');
+        return redirect('/showcategory')->with('success', 'Category created successfully');
     }
 
     public function delete_category($id)
     {
         $category = Category::find($id);
         $category->delete();
-        return redirect('/')->with('success', 'Category deleted successfully');
+        return redirect('/showcategory')->with('success', 'Category deleted successfully');
     }
 
+    public function edit_category($id){
+        $category = category::find($id);
+      
+        return view('category.editcategory',compact('category'));
+    }
     public function update_category(Request $request)
     {
                 $check= new MyvalidateController($request);
@@ -56,6 +61,6 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->update();
 
-        return redirect('/')->with('success', 'Category updated successfully');
+        return redirect('/showcategory')->with('success', 'Category updated successfully');
     }
 }

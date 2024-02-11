@@ -8,9 +8,11 @@
   </div>
   @endif
 <section class="Agents px-4 ">
+    @if(in_array('addcategory', Session::get('sidebar_links')))
     <div class="d-flex justify-content-end mb-3">
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add category</span></a>
     </div>
+    @endif
    
     <table class="table table-dark table-striped">
         <thead class="bg-light">
@@ -32,13 +34,15 @@
                     </div>
                 </td>
                 <td style="display: flex; gap:10px">
+                     @if(in_array('deletecategory', Session::get('sidebar_links')))
                     <form action="/deletecategory/{{ $category->id }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></button>
                     </form>
-
+                    @endif @if(in_array('editcategory', Session::get('sidebar_links')))
                     <a href="/editcategory/{{ $category->id }}"><button><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></button></a>
+                    @endif
                 </td>
             </tr>
             @endforeach

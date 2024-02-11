@@ -23,7 +23,7 @@
     <div class="wrapper">
    
      
-         <form action="{{ route('loginpost') }}" method="POST" style="width: 31vw;">
+         <form action="/loginpost" method="POST" style="width: 31vw;">
         @csrf
         <div class="row">
           <i class="fas fa-user"></i>

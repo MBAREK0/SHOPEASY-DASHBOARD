@@ -2,9 +2,11 @@
 @section('content')
 
 <section class="Agents px-4 ">
+    @if(in_array('addRole', Session::get('sidebar_links')))
     <div class="d-flex justify-content-end mb-3">
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add role</span></a>
     </div>
+    @endif
 
     <table class="table table-dark table-striped">
         <thead class="bg-light">
@@ -32,14 +34,17 @@
                 <div class="d-flex align-items-center">
                     <div class="ms-3">
                         <p class="fw-bold mb-1 f_title">
-                            {{ implode(', ', $role->permissions) }}
+                            {{ implode(' | ', $role->permissions) }}
                         </p>
                     </div>
                 </div>
             </td>
             <td>
+                 @if(in_array('deleteRole', Session::get('sidebar_links')))
                 <a href="/deleteRole/{{ $role->role_id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
+                @endif @if(in_array('editRole', Session::get('sidebar_links')))
                 <a href="/editRole/{{ $role->role_id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
+                @endif
             </td>
         </tr>
     @endforeach

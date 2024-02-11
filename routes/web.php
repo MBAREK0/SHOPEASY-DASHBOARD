@@ -3,8 +3,8 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ClientControlller;
-use App\Http\Controllers\MyvalidateController;
-use App\Http\Controllers\PermessionsController;
+    use App\Http\Controllers\MyvalidateController;
+    use App\Http\Controllers\PermessionsController;
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\RoleController;
     use App\Http\Controllers\UserController;
@@ -20,57 +20,61 @@ use App\Http\Controllers\PermessionsController;
     | be assigned to the "web" middleware group. Make something great!
     |
     */
-
-
-
-    Route::get('/', [CategoryController::class, 'list_categories']);
-    Route::get('/products', [ProductController::class, 'list_products']);
-    Route::get('/roles', [RoleController::class, 'show_roles']);
-    Route::post('/addRole', [RoleController::class, 'add_roles']);
-    Route::get('/deleteRole/{id}', [RoleController::class, 'deleteRole']);
-    Route::get('/editRole/{id}', [RoleController::class, 'editRole']);
-    Route::post('/updaterole', [RoleController::class, 'update_role']);
-    ////////////
-    Route::get('/permessions', [PermessionsController::class, 'show_permessions']);
-    Route::post('/addPermession', [PermessionsController::class, 'addPermessions']);
-    Route::get('/deletePermession/{id}', [PermessionsController::class, 'deletePermessions']);
-    Route::get('/editPermession/{id}', [PermessionsController::class, 'editPermessions']);
-    Route::post('/updatePermession', [PermessionsController::class, 'updatePermessions']);
-    ///////
-    // Route::middleware(['check-permission:gestionnaireClient'])->get('/clients', [ClientControlller::class, 'list_clients']);;
-    Route::get('/users', [UserController::class, 'show_users']);
-    Route::post('/addUser', [UserController::class, 'addUsers']);
-    Route::get('/deleteUser/{id}', [UserController::class, 'deleteUsers']);
-    Route::get('/editUser/{id}', [UserController::class, 'editUsers']);
-    Route::post('/updateUser', [UserController::class, 'updateUsers']);
-    /////
-    Route::post('/addcategory', [CategoryController::class, 'create_category']);
     Route::post('/updateCategory', [CategoryController::class, 'update_category']);
-    Route::delete('/deletecategory/{id}', [CategoryController::class, 'delete_category']);
-    Route::get('/editcategory/{id}', [CategoryController::class, 'edit_category']);
-    Route::get('/editproduct/{id}', [ProductController::class, 'edit_product']);
     Route::post('/updateproducts', [ProductController::class, 'update_product']);
-    Route::post('/addproducts', [ProductController::class, 'add_product']);
-    Route::get('/deleteproduct/{id}', [ProductController::class, 'delete_product']);
-     Route::get('/clients', [ClientControlller::class, 'list_clients']);
-    Route::post('/addclients', [ClientControlller::class, 'add_client']);
-    Route::get('/deleteclient/{id}', [ClientControlller::class, 'delete_client']);
-    Route::get('/editclient/{id}', [ClientControlller::class, 'edit_client']);
+    Route::post('/updaterole', [RoleController::class, 'update_role']);
+    Route::post('/updateUser', [UserController::class, 'updateUsers']);
     Route::post('/updateclients/{id}', [ClientControlller::class, 'update_client']);
-    Route::get('/allproducts', [ProductController::class, 'allproducts']);
-    // auth
+
+Route::middleware(['myAuth', 'CheckRole'])->group(function () {
+    // Categories
+    Route::get('/showcategory', [CategoryController::class, 'list_categories'])->name('Show-the-categories');
+    Route::post('/addcategory', [CategoryController::class, 'create_category'])->name('create-category');
+    Route::delete('/deletecategory/{id}', [CategoryController::class, 'delete_category'])->name('delete-category');
+    Route::get('/editcategory/{id}', [CategoryController::class, 'edit_category'])->name('edit-category');
+
+    // products
+    Route::get('/products', [ProductController::class, 'list_products'])->name('Show-the-products');
+    Route::get('/editproduct/{id}', [ProductController::class, 'edit_product'])->name('edit-product');
+    Route::post('/addproducts', [ProductController::class, 'add_product'])->name('add-product');
+    Route::get('/deleteproduct/{id}', [ProductController::class, 'delete_product'])->name('delete-product');
+
+    // roles
+    Route::get('/roles', [RoleController::class, 'show_roles'])->name('Show-the-rols');
+    Route::post('/addRole', [RoleController::class, 'add_roles'])->name('add-an-role');
+    Route::get('/deleteRole/{id}', [RoleController::class, 'deleteRole'])->name('delete-an-role');
+    Route::get('/editRole/{id}', [RoleController::class, 'editRole'])->name('edit-an-role');
+  
+
+    // users
+    Route::get('/users', [UserController::class, 'show_users'])->name('show-users');
+    Route::post('/addUser', [UserController::class, 'addUsers'])->name('add-users');
+    Route::get('/deleteUser/{id}', [UserController::class, 'deleteUsers'])->name('delete-users');
+    Route::get('/editUser/{id}', [UserController::class, 'editUsers'])->name('edit-users');
+    
+    
+    // clients
+    Route::get('/clients', [ClientControlller::class, 'list_clients'])->name('show-list-clients');
+    Route::post('/addclients', [ClientControlller::class, 'add_client'])->name('add-client');
+    Route::get('/deleteclient/{id}', [ClientControlller::class, 'delete_client'])->name('delete-client');
+    Route::get('/editclient/{id}', [ClientControlller::class, 'edit_client'])->name('edit-client');
+
+ 
+      // permessions & home-page
+    Route::get('/permessions', [PermessionsController::class, 'show_permessions'])->name('show-permessions');
+    });
+
+    // auth 
     Route::get('/register', [AuthController::class, 'register']);
-    Route::post('/registerpost', [AuthController::class, 'registerPost'])->name('registerpost');
+    Route::post('/registerpost', [AuthController::class, 'registerPost']);
     Route::get('/login', [AuthController::class, 'login']);
     Route::get('/forgetpassword', [AuthController::class, 'forgetpassword']);
     Route::post('/resetpasswordPost', [AuthController::class, 'sendemail']);
     Route::post('/newpasswordPost', [AuthController::class, 'addpassword']);
-
     Route::get('/resetwithemail/{token}', [AuthController::class, 'reset'])->name('resetwithemail');
     Route::get('/logout', [AuthController::class, 'logout']);
-    Route::post('/loginpost', [AuthController::class, 'loginpost'])->name('loginpost');
+    Route::post('/loginpost', [AuthController::class, 'loginpost']);
 
-
-
-        Route::get('/valide',[MyvalidateController::class,'myValidate']);
+    Route::get('/', [ProductController::class, 'allproducts'])->name('home-page')->middleware('myAuth');
+     
 

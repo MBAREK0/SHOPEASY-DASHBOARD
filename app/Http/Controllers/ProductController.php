@@ -16,17 +16,6 @@ class ProductController extends Controller
         return view('product.product', ['produits' => $produits, 'categories' =>$categories]);
     }
 
-    // public function liste_product()
-    // {
-
-    //     $products = DB::table('products')
-    //     ->join('categories', 'categories.id', '=', 'products.category_id')
-    //     ->select('products.*', 'categories.name as category_name')
-    //     ->simplePaginate(2);
-
-    //     return view('products.product', compact('products'));
-    // }
-
     public function add_product(Request $request)
     {
         $request->validate([

@@ -8,9 +8,11 @@
   </div>
   @endif
 <section class="Agents px-4 ">
+     @if(in_array('addproducts', Session::get('sidebar_links')))
     <div class="d-flex justify-content-end mb-3">
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> Add product</a>
     </div>
+    @endif
 
     <table  class="table table-dark table-striped">
         <thead class="bg-light">
@@ -82,8 +84,11 @@
                 </td>
 
                 <td>
+                     @if(in_array('deleteproduct', Session::get('sidebar_links')))
                     <a href="/deleteproduct/{{ $product->id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
+                     @endif  @if(in_array('editproduct', Session::get('sidebar_links')))
                     <a href="/editproduct/{{ $product->id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
+                    @endif
                 </td>
             </tr>
             @endforeach

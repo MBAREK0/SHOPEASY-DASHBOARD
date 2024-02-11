@@ -37,6 +37,11 @@
 											{{$message}}
 											</div>
 											@endif
+											@if ($errors->has('fatal'))
+												<div class="alert alert-danger">
+													{{ $errors->first('fatal') }}
+												</div>
+											@endif
 										<div class="text-center mt-3">
 											<button type="submit" class="btn btn-lg btn-primary">Reset password</button>
 										</div>

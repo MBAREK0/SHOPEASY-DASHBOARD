@@ -8,7 +8,7 @@ class MyvalidateController extends Controller
 {
     protected $data ;
     public function __construct($data){
-        $this->data=is_array($data) ? $data : $data->toArray();;
+        $this->data=is_array($data) ? $data : $data->toArray();
     }
     public function myValidate($roles=[]) {
         $data = $this->data;

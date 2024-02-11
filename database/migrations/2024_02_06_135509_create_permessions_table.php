@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('permessions', function (Blueprint $table) {
             $table->id();
             $table->string('permessions_name');
+            $table->string('route');
             $table->timestamps();
         });
     }

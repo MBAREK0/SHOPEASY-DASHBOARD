@@ -27,7 +27,7 @@
 </head>
 
 <body>
-	<h1>hhhhh</h1>
+	
 	<div class="search-form" id="search-form">
 		<form action="">
 			<input type="search" class="form-control" placeholder="Enter keyword to search...">

@@ -2,9 +2,12 @@
 @section('content')
 
 <section class="Agents px-4 ">
+    @if (Session::has('sidebar_links'))
+     @if(in_array('addUser', Session::get('sidebar_links')))
     <div class="d-flex justify-content-end mb-3">
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add User</span></a>
     </div>
+    @endif
 
     <table class="table table-dark table-striped">
         <thead class="bg-light">
@@ -46,14 +49,18 @@
                     </div>
                 </td>
                  <td>
+                     @if(in_array('deleteUser', Session::get('sidebar_links')))
                     <a href="/deleteUser/{{ $user->id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
+                     @endif @if(in_array('editUser', Session::get('sidebar_links')))       
                     <a href="/editUser/{{ $user->id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
+                    @endif
                 </td>
             </tr>
             @endforeach
+
         </tbody>
     </table>
-
+@endif
 </section>
 @endsection
 @section('additional_content')
@@ -78,6 +85,7 @@
                      <div class="form-group">
                         <label>Role</label>
                         <select class="form-control" name="role_id" data-placeholder="choose a role">
+                             <option value=""></option>
                             @foreach($roles as $role)
                             <option value="{{ $role->id }}">{{ $role->name }}</option>
                             @endforeach

@@ -28,30 +28,34 @@
                     <a href="#" class="nav-link text-white-50">ADIDAS</a>
 
                 </div>
-
+            @if (Session::has('sidebar_links'))
                 <ul class="sidebar_nav">
-
+                    @if(in_array('showcategory', Session::get('sidebar_links')))
                     <li class="sidebar_item ">
-                        <a href="/" class="sidebar_link"> <img src="{{ asset('img/task.svg') }}" alt="icon">Categories</a>
+                        <a href="/showcategory" class="sidebar_link"> <img src="{{ asset('img/task.svg') }}" alt="icon">Categories</a>
                     </li>
-
+                    @endif @if(in_array('products', Session::get('sidebar_links')))
                     <li class="sidebar_item ">
                         <a href="/products" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Products</a>
                     </li>
-
+                    @endif @if(in_array('clients', Session::get('sidebar_links')))
                     <li class="sidebar_item ">
                         <a href="/clients" class="sidebar_link"><img src="{{ asset('img/agents.svg') }}" alt="icon">Clients</a>
                     </li>
-
+                    @endif @if(in_array('roles', Session::get('sidebar_links')))
                     <li class="sidebar_item ">
                         <a href="/roles" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Roles</a>
                     </li>
+                    @endif @if(in_array('permessions', Session::get('sidebar_links')))                   
                      <li class="sidebar_item ">
                         <a href="/permessions" class="sidebar_link"><img src="{{ asset('img/articles.svg') }}" alt="icon">Permessions</a>
                     </li>
+                    @endif @if(in_array('users', Session::get('sidebar_links')))
                      <li class="sidebar_item ">
                         <a href="/users" class="sidebar_link"><img src="{{ asset('img/agent.svg') }}" alt="icon">Administration</a>
                     </li>
+                    @endif 
+            @endif
                     <li class="sidebar_item ">
                         <a href="/logout" class="sidebar_link">Logout</a>
                     </li>

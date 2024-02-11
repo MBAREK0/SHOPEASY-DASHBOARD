@@ -53,20 +53,22 @@ class AuthController extends Controller
         ]);
     if($result !== 'secces'){
         return  back()->withErrors($result); 
+      }
+      
 
-    }
- 
         $user = User::where('email', $request->email)->first();
         if (!$user || !Hash::check($request->password, $user->password)) {
             return back()->with('error', 'Invalid email or password');
         }
         session(['user_id' => $user->id]);
+        session(['user_role' => $user->id_role]);
         return redirect('/');
     }
 
     public function logout(){
         session()->forget('user_id');
-        return redirect('/allproducts');
+        session()->forget('user_role');
+        return redirect('/login');
     }
 
     public function forgetpassword(){
@@ -82,13 +84,17 @@ class AuthController extends Controller
     ]);
     if($result !== 'secces'){
     return  back()->withErrors($result); 
+        }
+       $checkIfExist = User::where('email', $request->email)->count();
 
-}
-
+       if(!$checkIfExist ){
+        return back()->withErrors(['fatal' => 'account '.$request->email.' not found pleas sign up ']); 
+       }
     $token = Str::random(60);
     User::where('email', $request->email)->update(['remember_token' => $token]);
 
     $resetLink = route('resetwithemail', ['token' => $token]);
+    // $resetLink = '/resetwithemail/{token}';
 
     $to = $request->email;
     $subject = 'Password Reset Link';
@@ -104,7 +110,7 @@ class AuthController extends Controller
     if ($success) {
         return back()->with('success', 'check your email for geting the link of reset password');
     } else {
-        return back()->withErrors(['email' => 'Failed to send reset link.']);
+        return back()->withErrors(['fatal' => 'Failed to send reset link.']);
     }
 }
 

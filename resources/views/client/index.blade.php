@@ -1,11 +1,11 @@
 @extends('layout')
 @section('clients')
 <section class="Agents px-4 ">
+    @if(in_array('addclients', Session::get('sidebar_links')))
     <div class="d-flex justify-content-end mb-3">
-        
         <a href="#addEmployeeModal" class="btn btn-secondary" data-toggle="modal"><i class="material-icons">&#xE147;</i> Add client</a>
     </div>
-   
+   @endif
     <table class="table table-dark table-striped">
         <thead class="bg-light">
             <tr>
@@ -61,8 +61,11 @@
                 </td>
 
                 <td>
+                    @if(in_array('deleteclient', Session::get('sidebar_links')))
                     <a href="/deleteclient/{{ $client->id }}"><img class="delet_user" src="{{ asset('img/delete.svg') }}" alt=""></a>
+                     @endif @if(in_array('editclient', Session::get('sidebar_links')))
                     <a href="/editclient/{{ $client->id }}"><img class="ms-2 edit" src="{{ asset('img/edit.svg') }}" alt=""></a>
+                    @endif
                 </td>
             </tr>
             @endforeach
