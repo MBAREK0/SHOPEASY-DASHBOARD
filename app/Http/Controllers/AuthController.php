@@ -77,8 +77,7 @@ class AuthController extends Controller
 
     public function sendemail(Request $request)
 {
-            $check= new MyvalidateController($request);
-
+     $check= new MyvalidateController($request);
      $result=$check->myValidate([
         'email' => 'required',
     ]);
@@ -101,7 +100,7 @@ class AuthController extends Controller
 
     // Sending email
     $success = Mail::send('mail.index', ['resetLink' => $resetLink], function ($message) use ($to, $subject) {
-         $message->from('hello@app.com', 'Your Application');
+         $message->from('elaadraouimbarek2023@gmail.com', 'Adidas');
         $message->to($to)
                 ->subject($subject);
    

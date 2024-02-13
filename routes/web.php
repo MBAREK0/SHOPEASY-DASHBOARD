@@ -3,7 +3,7 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\CategoryController;
     use App\Http\Controllers\ClientControlller;
-    use App\Http\Controllers\MyvalidateController;
+    use App\Http\Controllers\HomeController;
     use App\Http\Controllers\PermessionsController;
     use App\Http\Controllers\ProductController;
     use App\Http\Controllers\RoleController;
@@ -75,6 +75,6 @@ Route::middleware(['myAuth', 'CheckRole'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/loginpost', [AuthController::class, 'loginpost']);
 
-    Route::get('/', [ProductController::class, 'allproducts'])->name('home-page')->middleware('myAuth');
+    Route::get('/', [HomeController::class, 'index'])->name('home-page')->middleware('myAuth');
      
 

@@ -56,7 +56,6 @@ class setRoutesController extends Controller
             'route' => $route['uri'],
         ]);
     }
-
     echo 'Routes updated successfully.';
 }
 

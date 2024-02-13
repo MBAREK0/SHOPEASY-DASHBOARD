@@ -90,10 +90,7 @@ class ProductController extends Controller
 
     }
 
-    public function allproducts(){
-        $products = Product::all();
-         return view('index',compact('products'));
-    }
+ 
 
     }
 

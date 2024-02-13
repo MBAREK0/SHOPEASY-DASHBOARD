@@ -57,7 +57,7 @@
 
                         <div class="ms-3">
                             <p class="fw-bold mb-1 f_title">
-                            <p>{{ $product->prix }}</p>
+                            <p>{{ $product->prix }} $</p>
                             </p>
                         </div>
                     </div>

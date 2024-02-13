@@ -39,7 +39,6 @@ class RoleController extends Controller
         foreach ($request->permissions as $permissionId) {
             $role->belongsToMany(Permessions::class, 'role_permissions', 'id_role', 'id_permissions')->attach($permissionId);
         }
-        
         return redirect('/roles');
     }
    
