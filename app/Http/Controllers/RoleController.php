@@ -13,7 +13,6 @@ class RoleController extends Controller
     public function show_roles()
     {
         $roles = DB::select('select role_permissions.*, roles.name as role_name, permessions.permessions_name as permessions_name,roles.id as role_id from role_permissions join roles on role_permissions.id_role=roles.id join permessions on permessions.id=role_permissions.id_permissions');
-        // dd($roles);
         $uniqueRoles = [];
         foreach ($roles as $role) {
             $roleId = $role->id_role;
@@ -21,9 +20,10 @@ class RoleController extends Controller
                 $uniqueRoles[$roleId] = (object) $role;
                 $uniqueRoles[$roleId]->permissions = [];
             }
+            
             $uniqueRoles[$roleId]->permissions[] = $role->permessions_name;
         }
-        // dd($uniqueRoles);
+       
         $permessions = Permessions::all();
         return view('Role.index', compact('uniqueRoles', 'permessions'));
     }

@@ -60,6 +60,7 @@
 
         </tbody>
     </table>
+  
 @endif
 </section>
 @endsection

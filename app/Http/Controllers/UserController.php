@@ -22,8 +22,7 @@ class UserController extends Controller
 
     public function addUsers(Request $request)
     {
-               $check= new MyvalidateController($request);
-
+    $check= new MyvalidateController($request);
      $result=$check->myValidate([
             'name' => 'required',
             'email' => 'required',

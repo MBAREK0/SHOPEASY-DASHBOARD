@@ -76,5 +76,6 @@ Route::middleware(['myAuth', 'CheckRole'])->group(function () {
     Route::post('/loginpost', [AuthController::class, 'loginpost']);
 
     Route::get('/', [HomeController::class, 'index'])->name('home-page')->middleware('myAuth');
+    Route::post('/', [HomeController::class, 'index'])->name('home-page')->middleware('myAuth');
      
 

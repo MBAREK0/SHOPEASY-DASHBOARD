@@ -29,9 +29,11 @@
 							<div id="colorlib-logo" style="display: flex; align-items:center;"><a href="index.html" style="color:#595959;"><img src="images/logo-removebg-preview.png" width="60px" style="margin-bottom: 12px;" alt="logo">Adidas</a></div>
 						</div>
 						<div class="col-sm-5 col-md-3">
-			            <form action="#" class="search-wrap">
+			            <form action="/" method="post" class="search-wrap">
+							@csrf
+							@method('post')
 			               <div class="form-group">
-			                  <input type="search" class="form-control search" placeholder="Search">
+			                  <input type="search" name="search"  class="form-control search" placeholder="Search" id="search">
 			                  <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
 			               </div>
 			            </form>
@@ -104,13 +106,13 @@
 			</div>
 
 		<div class="colorlib-product">
-			<div class="container">
-				<div class="row">
+			<div class="container" id="pro-searched">
+				<div class="row" >
 					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
 						<h2>Best Sellers</h2>
 					</div>
 				</div>
-				<div class="row row-pb-md">
+				<div class="row row-pb-md  " >
 					@foreach($products as $item)
 					<div class="col-lg-3 mb-4 text-center">
 						<div class="product-entry border">
@@ -123,16 +125,16 @@
 							</div>
 						</div>
 					</div>
-					@endforeach
+      			  @endforeach
 				</div>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
-					</div>
-				</div>
+
 			</div>
+		
 		</div>
-		<div style="display: flex; justify-content:center;">{{ $products->links() }}</div>
+	</div>
+    <div style="display: flex; justify-content:center; ">{{ $products->links() }}</div>
+
+
 		<div class="colorlib-partner">
 			<div class="container">
 				<div class="row">
@@ -227,8 +229,8 @@
 					<div class="col-sm-12 text-center">
 						<p>
 							<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
 							<span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
 						</p>
 					</div>
@@ -241,7 +243,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
 	</div>
 	
-
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.waypoints.min.js"></script>
 	<script src="js/jquery.flexslider-min.js"></script>

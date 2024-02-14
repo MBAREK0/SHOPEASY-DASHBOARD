@@ -72,6 +72,8 @@
         </tbody>
         
     </table>
+    <br>
+    <div style="display: flex; justify-content:end;">{{ $clients->links() }}</div>
 
 </section>
 @endsection

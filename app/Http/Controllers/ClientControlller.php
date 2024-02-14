@@ -7,7 +7,7 @@
     {
         //
         public function list_clients(){
-            $clients= Client::all();
+            $clients= Client::latest()->paginate(10);
             return view('client.index', compact('clients'));
         }
 

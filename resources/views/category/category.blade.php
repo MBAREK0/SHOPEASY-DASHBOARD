@@ -48,6 +48,8 @@
             @endforeach
         </tbody>
     </table>
+    <br>
+    <div style="display: flex; justify-content:end;">{{ $categories->links() }}</div>
 
 </section>
 @endsection
