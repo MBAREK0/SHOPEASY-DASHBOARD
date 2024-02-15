@@ -96,6 +96,7 @@
         </tbody>
         
     </table>
+    <div style="display: flex; justify-content:end;">{{ $produits->links() }}</div>
 
 </section>
 @endsection

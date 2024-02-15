@@ -51,6 +51,7 @@
 </tbody>
 
     </table>
+    {{-- <div style="display: flex; justify-content:end;">{{ $roles->links() }}</div> --}}
 
 </section>
 @endsection

@@ -10,11 +10,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     //
-    public function list_products(){
-        $categories= Category::all();
-        $produits= DB::select('select products.*, categories.name as category_name from products JOIN categories on products.id_categorie = categories.id');
-        return view('product.product', ['produits' => $produits, 'categories' =>$categories]);
-    }
+public function list_products(){
+    $categories = Category::all();
+    $produits = DB::table('products')
+        ->select('products.*', 'categories.name as category_name')
+        ->join('categories', 'products.id_categorie', '=', 'categories.id')
+        ->paginate(2); // You can adjust the number of items per page as needed
+ 
+    return view('product.product', ['produits' => $produits, 'categories' => $categories]);
+}
+
 
     public function add_product(Request $request)
     {

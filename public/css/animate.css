@@ -3368,3 +3368,32 @@ Copyright (c) 2015 Daniel Eden
   background-color: none !important;
   border: none ;
 }
+#categories-dropdown{
+  background-color: transparent;  
+  border: none; 
+  padding: 5px; 
+  width: 150px; 
+  color: white;
+}
+#categories-dropdown option{
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+
+}
+#cat-sub{
+  border: none;
+   background-color: transparent;
+   color: white;
+}
+.inline-form{
+  background-color: #595959;
+  border-radius: 15px;
+  padding: 5px;
+  width: fit-content;
+ 
+  
+}
+.cat-container{
+   display: flex;
+  justify-content: center;
+}

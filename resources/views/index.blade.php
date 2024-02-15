@@ -43,16 +43,6 @@
 						<div class="col-sm-12 text-left menu-1">
 							<ul>
 								<li class="active"><a href="index.html">Home</a></li>
-								<li class="has-dropdown">
-									<a href="men.html">Men</a>
-									<ul class="dropdown">
-										<li><a href="product-detail.html">Product Detail</a></li>
-										<li><a href="cart.html">Shopping Cart</a></li>
-										<li><a href="checkout.html">Checkout</a></li>
-										<li><a href="order-complete.html">Order Complete</a></li>
-										<li><a href="add-to-wishlist.html">Wishlist</a></li>
-									</ul>
-								</li>
 								<li><a href="women.html">Women</a></li>
 								<li><a href="about.html">About</a></li>
 								<li><a href="contact.html">Contact</a></li>
@@ -110,6 +100,19 @@
 				<div class="row" >
 					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
 						<h2>Best Sellers</h2>
+						<div class="cat-container">
+						<form action="/filter" class="inline-form" method="post">
+							@csrf
+							@method('post')
+							<select name="categories" id="categories-dropdown">
+								<option value="categories">categories</option>
+								@foreach($categories as $item)
+								<option value="{{$item->id}}">{{$item->name}}</option>
+								@endforeach
+							</select>												
+							<button type="submit" id="cat-sub">FILTER</button>
+						</form>
+						</div>
 					</div>
 				</div>
 				<div class="row row-pb-md  " >
@@ -132,7 +135,6 @@
 		
 		</div>
 	</div>
-    <div style="display: flex; justify-content:center; ">{{ $products->links() }}</div>
 
 
 		<div class="colorlib-partner">
