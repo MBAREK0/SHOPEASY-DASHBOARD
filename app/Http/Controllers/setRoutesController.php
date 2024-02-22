@@ -10,7 +10,7 @@ class setRoutesController extends Controller
 
   public function set(){
     $routes = [];
-
+        
          $permissionsCount = Permessions::count();
        
          if($permissionsCount > 0){

@@ -19,8 +19,7 @@ class AuthController extends Controller
 
     public function registerPost(Request $request){
 
-        $check= new MyvalidateController($request);
-
+      $check= new MyvalidateController($request);
      $result=$check->myValidate([
             'name' => 'required',
             'email' => 'required',

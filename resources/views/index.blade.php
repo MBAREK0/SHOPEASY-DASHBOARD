@@ -42,11 +42,12 @@
 					<div class="row">
 						<div class="col-sm-12 text-left menu-1">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
-								<li><a href="women.html">Women</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								<li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a></li>
+								<li class="active"><a href="/">Home</a></li>
+								{{-- @if(in_array('showcategory', Session::get('sidebar_links')))
+								<li >
+									<a href="/showcategory" class="sidebar_link">dashboard</a>
+								</li>
+								@endif --}}
 							</ul>
 						</div>
 					</div>

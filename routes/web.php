@@ -45,13 +45,11 @@ Route::middleware(['myAuth', 'CheckRole'])->group(function () {
     Route::get('/deleteRole/{id}', [RoleController::class, 'deleteRole'])->name('delete-an-role');
     Route::get('/editRole/{id}', [RoleController::class, 'editRole'])->name('edit-an-role');
   
-
     // users
     Route::get('/users', [UserController::class, 'show_users'])->name('show-users');
     Route::post('/addUser', [UserController::class, 'addUsers'])->name('add-users');
     Route::get('/deleteUser/{id}', [UserController::class, 'deleteUsers'])->name('delete-users');
     Route::get('/editUser/{id}', [UserController::class, 'editUsers'])->name('edit-users');
-    
     
     // clients
     Route::get('/clients', [ClientControlller::class, 'list_clients'])->name('show-list-clients');
