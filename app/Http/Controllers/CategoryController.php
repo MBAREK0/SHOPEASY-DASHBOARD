@@ -11,7 +11,7 @@ class CategoryController extends Controller
     //
     public function list_categories()
     {
-        $categories = Category::latest()->paginate(1);
+        $categories = Category::latest()->paginate(10);
         return view('category.category', compact('categories'));
     }
     public function create_category(Request $request)

@@ -28,6 +28,7 @@
 
 Route::middleware(['myAuth', 'CheckRole'])->group(function () {
     // Categories
+    Route::get('/', [CategoryController::class, 'list_categories'])->name('Show-the-categories');
     Route::get('/showcategory', [CategoryController::class, 'list_categories'])->name('Show-the-categories');
     Route::post('/addcategory', [CategoryController::class, 'create_category'])->name('create-category');
     Route::delete('/deletecategory/{id}', [CategoryController::class, 'delete_category'])->name('delete-category');
@@ -73,9 +74,6 @@ Route::middleware(['myAuth', 'CheckRole'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::post('/loginpost', [AuthController::class, 'loginpost']);
 
-    Route::get('/', [HomeController::class, 'index'])->name('home-page')->middleware('myAuth');
-    Route::get('/filter', [HomeController::class, 'index'])->name('home-page')->middleware('myAuth');
-    Route::post('/', [HomeController::class, 'index'])->name('home-page')->middleware('myAuth');
-    Route::post('/filter', [HomeController::class, 'filter'])->name('home-page')->middleware('myAuth');
+  
      
 

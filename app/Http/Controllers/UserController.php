@@ -6,6 +6,8 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -32,9 +34,12 @@ class UserController extends Controller
           return  back()->withErrors($result); 
         }
 
+        $password = 'password';
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password = Hash::make($request->password);
         $user->id_role = $request->role_id;
         $user->save();
         return redirect('/users');

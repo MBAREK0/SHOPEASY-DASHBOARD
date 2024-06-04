@@ -15,7 +15,7 @@ public function list_products(){
     $produits = DB::table('products')
         ->select('products.*', 'categories.name as category_name')
         ->join('categories', 'products.id_categorie', '=', 'categories.id')
-        ->paginate(2); // You can adjust the number of items per page as needed
+        ->paginate(10); // You can adjust the number of items per page as needed
  
     return view('product.product', ['produits' => $produits, 'categories' => $categories]);
 }
